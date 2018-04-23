@@ -1,0 +1,102 @@
+﻿<Window Height="350" Title="MainWindow" Width="525" 
+		x:Class="WpfApplication2.MainWindow" 
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+		xmlns:dxsps="http://schemas.devexpress.com/winfx/2008/xaml/spreadsheet" 
+		xmlns:dxspsi="http://schemas.devexpress.com/winfx/2008/xaml/spreadsheet/internal" 
+		xmlns:local="clr-namespace:WpfApplication2" 
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
+		xmlns:themes="http://schemas.devexpress.com/winfx/2008/xaml/spreadsheet/themekeys" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Window.DataContext>
+    <local:SpreadsheetViewModel />
+  </Window.DataContext>
+	<Window.Resources>
+		<SolidColorBrush x:Key="Header.BorderBrush" Color="#FF062B63" />
+		<LinearGradientBrush x:Key="Header.Background" EndPoint="0.5,1" StartPoint="0.5,0">
+			<GradientStop Color="#FF6288C0" Offset="0" />
+			<GradientStop Color="#FF7095CA" Offset="1" />
+			<GradientStop Color="#FF2E5695" Offset="0.5" />
+			<GradientStop Color="#FF234884" Offset="0.5" />
+		</LinearGradientBrush>
+		<SolidColorBrush x:Key="Header.BorderBrush.IsMouseOver" Color="#FF062B63" />
+		<LinearGradientBrush x:Key="Header.Background.IsMouseOver" EndPoint="0.5,1" StartPoint="0.5,0">
+			<GradientStop Color="#FF7EABDB" Offset="0" />
+			<GradientStop Color="#FF95CFF2" Offset="1" />
+			<GradientStop Color="#FF3C66A9" Offset="0.5" />
+			<GradientStop Color="#FF2A5394" Offset="0.5" />
+		</LinearGradientBrush>
+		<SolidColorBrush x:Key="Header.BorderBrush.IsSelected" Color="#FF062B63" />
+		<LinearGradientBrush x:Key="Header.Background.IsSelected" EndPoint="0.5,1" StartPoint="0.5,0">
+			<GradientStop Color="#FF325496" Offset="0" />
+			<GradientStop Color="#FF2C5596" Offset="1" />
+			<GradientStop Color="#FF3F6AA9" Offset="0.15" />
+			<GradientStop Color="#FF2D5595" Offset="0.5" />
+			<GradientStop Color="#FF224885" Offset="0.5" />
+		</LinearGradientBrush>
+		<SolidColorBrush x:Key="Header.Highlight" Color="#FF88ABDE" />
+		<SolidColorBrush x:Key="Header.Highlight.IsMouseOver" Color="#FFA6C7EF" />
+		<SolidColorBrush x:Key="Header.Highlight.IsSelected" Color="#FF325496" />
+
+        <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=VerticalHeaderItem, IsThemeIndependent=True}" TargetType="{x:Type dxspsi:HeaderItem}">
+            <Border x:Name="Root" Background="{StaticResource Header.Background}" BorderBrush="{StaticResource Header.BorderBrush}" BorderThickness="0,1,1,0" Margin="0,-1,-1,0">
+                <Grid>
+                    <Border x:Name="highlight" BorderThickness="0,1,0,0" BorderBrush="{StaticResource Header.Highlight}" />
+                    <TextBlock Text="{TemplateBinding Text}" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="highlight" Property="BorderBrush" Value="{StaticResource Header.Highlight.IsMouseOver}"/>
+                    <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource Header.BorderBrush.IsMouseOver}"/>
+                    <Setter TargetName="Root" Property="Background"  Value="{StaticResource Header.Background.IsMouseOver}"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter TargetName="highlight" Property="BorderBrush" Value="{StaticResource Header.Highlight.IsSelected}"/>
+                    <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource Header.BorderBrush.IsSelected}"/>
+                    <Setter TargetName="Root" Property="Background"  Value="{StaticResource Header.Background.IsSelected}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=HorizontalHeaderItem, IsThemeIndependent = true}" TargetType="{x:Type dxspsi:HeaderItem}">
+			<Border x:Name="Root" Background="{StaticResource Header.Background}" BorderBrush="{StaticResource Header.BorderBrush}" BorderThickness="1,0,0,1" Margin="-1,0,0,-1" Width="{Binding Width}">
+				<Grid>
+					<Border x:Name="highlight" BorderThickness="0,1,0,0" BorderBrush="{StaticResource Header.Highlight}" />
+                    <TextBlock Foreground="White"  TextAlignment="Center" 
+                             HorizontalAlignment="Center" VerticalAlignment="Center"  >
+                        <TextBlock.Text>
+                                <MultiBinding Converter="{local:HeaderConverter}">
+                                    <Binding Path="Text" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="Captions"  Mode="OneWay"  />
+                                </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Grid>
+			</Border>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter TargetName="highlight" Property="BorderBrush" Value="{StaticResource Header.Highlight.IsMouseOver}" />
+					<Setter TargetName="Root" Property="Background" Value="{StaticResource Header.Background.IsMouseOver}" />
+					<Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource Header.BorderBrush.IsMouseOver}" />
+				</Trigger>
+				<Trigger Property="IsSelected" Value="True">
+					<Setter TargetName="highlight" Property="BorderBrush" Value="{StaticResource Header.Highlight.IsSelected}" />
+					<Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource Header.BorderBrush.IsSelected}" />
+					<Setter TargetName="Root" Property="Background" Value="{StaticResource Header.Background.IsSelected}" />
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+
+	</Window.Resources>
+
+	<Grid>
+        <dxsps:SpreadsheetControl x:Name="ssControl1">
+            <dxmvvm:Interaction.Triggers>
+                <dxmvvm:EventToCommand Command="{Binding DocumentLoadedCommand}"  CommandParameter="{Binding ElementName=ssControl1}"
+                                                   EventName="DocumentLoaded" />
+                <dxmvvm:EventToCommand Command="{Binding EmptyDocumentCreatedCommand}"  CommandParameter="{Binding ElementName=ssControl1}"
+                                                   EventName="EmptyDocumentCreated" />
+            </dxmvvm:Interaction.Triggers>
+        </dxsps:SpreadsheetControl>
+    </Grid>
+</Window>
