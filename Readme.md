@@ -1,3 +1,11 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [HeaderItemEx.cs](./CS/WpfApplication2/HeaderItemEx.cs) (VB: [HeaderItemEx.vb](./VB/WpfApplication2/HeaderItemEx.vb))
+* **[MainWindow.xaml](./CS/WpfApplication2/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/WpfApplication2/MainWindow.xaml))**
+* [MainWindow.xaml.cs](./CS/WpfApplication2/MainWindow.xaml.cs) (VB: [MainWindow.xaml](./VB/WpfApplication2/MainWindow.xaml))
+* [SpreadsheetViewModel.cs](./CS/WpfApplication2/SpreadsheetViewModel.cs) (VB: [SpreadsheetViewModel.vb](./VB/WpfApplication2/SpreadsheetViewModel.vb))
+<!-- default file list end -->
 #  How to customize columns and rows headings
 
 
