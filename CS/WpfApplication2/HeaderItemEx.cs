@@ -10,31 +10,36 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace WpfApplication2 {
-    public class HeaderConverter : MarkupExtension, IMultiValueConverter {
-        public HeaderConverter() {
-        }
+namespace WpfApplication2
+{
+    public class HeaderConverter : MarkupExtension, IMultiValueConverter
+    {
+        public HeaderConverter()
+        { }
 
-        public override object ProvideValue(IServiceProvider serviceProvider) {
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
             return this;
         }
 
-        public object Convert(object[] value, Type targetType, object parameter, CultureInfo culture) {
-            if(value == null || value[0] == null)
+        public object Convert(object[] value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null || value[0] == null)
                 return null;
             string columnHeader = value[0].ToString();
             ObservableCollection<CustomHeaderCaption> collection = value[1] as ObservableCollection<CustomHeaderCaption>;
-            if(collection == null || collection.Count == 0)
+            if (collection == null || collection.Count == 0)
                 return columnHeader;
 
             string result = collection.Where(l => l.OriginalCaption == columnHeader).Select(caption => caption.NewHeader).FirstOrDefault();
-            if(result != null)
+            if (result != null)
                 return result;
 
             return columnHeader;
         }
 
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture) {
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
             throw new NotImplementedException();
         }
     }

@@ -4,17 +4,16 @@ Imports System.Windows
 Imports System.Collections.Generic
 
 Namespace WpfApplication2
-    ''' <summary>
-    ''' Interaction logic for MainWindow.xaml
-    ''' </summary>
-    Partial Public Class MainWindow
-        Inherits Window
+	''' <summary>
+	''' Interaction logic for MainWindow.xaml
+	''' </summary>
+	Partial Public Class MainWindow
+		Inherits DevExpress.Xpf.Core.ThemedWindow
 
-        Public Sub New()
-            InitializeComponent()
-            ssControl1.LoadDocument("Book1.xlsx")
-        End Sub
-    End Class
+		Public Sub New()
+			InitializeComponent()
+		End Sub
+	End Class
 
 
 End Namespace
