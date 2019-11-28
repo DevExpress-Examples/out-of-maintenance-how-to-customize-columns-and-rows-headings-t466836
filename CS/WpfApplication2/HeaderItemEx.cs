@@ -12,16 +12,8 @@ using System.ComponentModel;
 
 namespace WpfApplication2
 {
-    public class HeaderConverter : MarkupExtension, IMultiValueConverter
+    public class HeaderConverter : IMultiValueConverter
     {
-        public HeaderConverter()
-        { }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return this;
-        }
-
         public object Convert(object[] value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null || value[0] == null)

@@ -12,15 +12,7 @@ Imports System.ComponentModel
 
 Namespace WpfApplication2
 	Public Class HeaderConverter
-		Inherits MarkupExtension
 		Implements IMultiValueConverter
-
-		Public Sub New()
-		End Sub
-
-		Public Overrides Function ProvideValue(ByVal serviceProvider As IServiceProvider) As Object
-			Return Me
-		End Function
 
 		Public Function Convert(ByVal value() As Object, ByVal targetType As Type, ByVal parameter As Object, ByVal culture As CultureInfo) As Object Implements IMultiValueConverter.Convert
 			If value Is Nothing OrElse value(0) Is Nothing Then

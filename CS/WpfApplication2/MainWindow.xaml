@@ -8,17 +8,18 @@
     xmlns:themes="http://schemas.devexpress.com/winfx/2008/xaml/spreadsheet/themekeys" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <dx:ThemedWindow.DataContext>
-        <local:SpreadsheetViewModel />
+        <local:SpreadsheetViewModel/>
     </dx:ThemedWindow.DataContext>
     <dx:ThemedWindow.Resources>
-        
+        <local:HeaderConverter x:Key="HeaderConverter"/>
         <!--Column Header Template-->
         <ControlTemplate x:Key="{themes:SpreadsheetThemeKey ResourceKey=VerticalHeaderItem, IsThemeIndependent=True}" TargetType="{x:Type dxspsi:HeaderItem}">
             <Grid x:Name="Root">
                 <Border x:Name="IsDefault" Background="#FFF0F0F0" BorderBrush="#FFABABAB" BorderThickness="0,0,1,1">
-                    <TextBlock x:Name="Content" Foreground="#FF444444" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock.Text>
-                            <MultiBinding Converter="{local:HeaderConverter}">
+                     <TextBlock x:Name="Content" Foreground="#FF444444" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center">
+                         <!--Specify multiple binding-->
+                         <TextBlock.Text>
+                            <MultiBinding Converter="{StaticResource ResourceKey=HeaderConverter}">
                                 <Binding Path="Text" RelativeSource="{RelativeSource TemplatedParent}" />
                                 <Binding Path="Captions" Mode="OneWay" />
                             </MultiBinding>
@@ -47,8 +48,9 @@
             <Grid x:Name="Root">
                 <Border x:Name="IsDefault" Background="#FFF0F0F0" BorderBrush="#FFABABAB" BorderThickness="0,0,1,1">
                     <TextBlock x:Name="Content" Foreground="#FF444444" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center">
+                        <!--Specify multiple binding-->
                         <TextBlock.Text>
-                            <MultiBinding Converter="{local:HeaderConverter}">
+                            <MultiBinding Converter="{StaticResource ResourceKey=HeaderConverter}">
                                 <Binding Path="Text" RelativeSource="{RelativeSource TemplatedParent}" />
                                 <Binding Path="Captions" Mode="OneWay" />
                             </MultiBinding>
