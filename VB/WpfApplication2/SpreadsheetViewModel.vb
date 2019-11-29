@@ -9,30 +9,21 @@ Imports DevExpress.Mvvm
 
 Namespace WpfApplication2
 	Public Class SpreadsheetViewModel
-		Private _Captions As ObservableCollection(Of CustomHeaderCaption)
-		Public Sub New()
-			Captions = New ObservableCollection(Of CustomHeaderCaption)()
-			FillCaptions()
-		End Sub
-		Public Property Captions() As ObservableCollection(Of CustomHeaderCaption)
-			Get
-				Return _Captions
-			End Get
-			Set(ByVal value As ObservableCollection(Of CustomHeaderCaption))
-				_Captions = value
-			End Set
-		End Property
+        Public Sub New()
+            Captions = New ObservableCollection(Of CustomHeaderCaption)()
+            FillCaptions()
+        End Sub
+        Public Property Captions() As ObservableCollection(Of CustomHeaderCaption)
+        Private Sub FillCaptions()
+            Captions.Add(New CustomHeaderCaption("A", "Column 1"))
+            Captions.Add(New CustomHeaderCaption("B", "Column 2"))
+            Captions.Add(New CustomHeaderCaption("C", "Column 3"))
 
-		Private Sub FillCaptions()
-			Captions.Add(New CustomHeaderCaption("A", "Column 1"))
-			Captions.Add(New CustomHeaderCaption("B", "Column 2"))
-			Captions.Add(New CustomHeaderCaption("C", "Column 3"))
-
-			Captions.Add(New CustomHeaderCaption("1", "Row 1"))
-			Captions.Add(New CustomHeaderCaption("2", "Row 2"))
-			Captions.Add(New CustomHeaderCaption("3", "Row 3"))
-		End Sub
-	End Class
+            Captions.Add(New CustomHeaderCaption("1", "Row 1"))
+            Captions.Add(New CustomHeaderCaption("2", "Row 2"))
+            Captions.Add(New CustomHeaderCaption("3", "Row 3"))
+        End Sub
+    End Class
 
 	Public Class CustomHeaderCaption
 		Public Property OriginalCaption() As String

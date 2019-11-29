@@ -11,23 +11,12 @@ namespace WpfApplication2
 {
     public class SpreadsheetViewModel 
     {
-        ObservableCollection<CustomHeaderCaption> _Captions;
         public SpreadsheetViewModel()
         {
             Captions = new ObservableCollection<CustomHeaderCaption>();
             FillCaptions();
         }
-        public ObservableCollection<CustomHeaderCaption> Captions
-        {
-            get
-            {
-                return _Captions;
-            }
-            set
-            {
-                _Captions = value;
-            }
-        }
+        public ObservableCollection<CustomHeaderCaption> Captions { get; set; }        
 
         void FillCaptions()
         {
@@ -43,23 +32,14 @@ namespace WpfApplication2
 
     public class CustomHeaderCaption
     {
-        public string OriginalCaption
-        {
-            get;
-            set;
-        }
+        public string OriginalCaption { get; set; }
 
-        public string NewHeader
-        {
-            get;
-            set;
-        }
+        public string NewHeader { get; set; }
         public CustomHeaderCaption(string oldText, string newText)
         {
             this.OriginalCaption = oldText;
             this.NewHeader = newText;
         }
-
 
     }
 }

@@ -32,7 +32,7 @@ namespace WpfApplication2
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            return value as object[];
+            return null;
         }
     }
 }
