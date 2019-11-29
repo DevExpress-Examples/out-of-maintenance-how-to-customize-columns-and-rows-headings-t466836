@@ -33,7 +33,7 @@ Namespace WpfApplication2
 		End Function
 
 		Public Function ConvertBack(ByVal value As Object, ByVal targetTypes() As Type, ByVal parameter As Object, ByVal culture As CultureInfo) As Object() Implements IMultiValueConverter.ConvertBack
-			Throw New NotImplementedException()
+			Return TryCast(value, Object())
 		End Function
 	End Class
 End Namespace
