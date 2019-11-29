@@ -8,7 +8,7 @@ Namespace WpfApplication2
 	''' Interaction logic for MainWindow.xaml
 	''' </summary>
 	Partial Public Class MainWindow
-		Inherits DevExpress.Xpf.Core.ThemedWindow
+		Inherits System.Windows.Window
 
 		Public Sub New()
 			InitializeComponent()

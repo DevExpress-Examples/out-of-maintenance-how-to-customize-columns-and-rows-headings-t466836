@@ -8,7 +8,7 @@ namespace WpfApplication2
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : DevExpress.Xpf.Core.ThemedWindow
+    public partial class MainWindow : System.Windows.Window
     {
         public MainWindow()
         {
