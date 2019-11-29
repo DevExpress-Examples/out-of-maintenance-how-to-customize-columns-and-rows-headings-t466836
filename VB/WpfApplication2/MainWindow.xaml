@@ -78,7 +78,7 @@
     <Grid>
         <dxsps:SpreadsheetControl x:Name="ssControl1" 
                                   DocumentSource="Book1.xlsx">
-                                            <dxsps:SpreadsheetControl.Options>
+            <dxsps:SpreadsheetControl.Options>
                 <dxsps:SpreadsheetControlOptions>
                     <dxsps:SpreadsheetControlOptions.View>
                         <dxsps:SpreadsheetViewOptions RowHeaderWidth="40"/>
@@ -86,6 +86,7 @@
                 </dxsps:SpreadsheetControlOptions>
             </dxsps:SpreadsheetControl.Options>
         </dxsps:SpreadsheetControl>
+
 
     </Grid>
 </dx:ThemedWindow>
