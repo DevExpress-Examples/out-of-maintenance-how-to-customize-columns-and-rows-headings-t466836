@@ -9,21 +9,22 @@ Imports DevExpress.Mvvm
 
 Namespace WpfApplication2
 	Public Class SpreadsheetViewModel
-        Public Sub New()
-            Captions = New ObservableCollection(Of CustomHeaderCaption)()
-            FillCaptions()
-        End Sub
-        Public Property Captions() As ObservableCollection(Of CustomHeaderCaption)
-        Private Sub FillCaptions()
-            Captions.Add(New CustomHeaderCaption("A", "Column 1"))
-            Captions.Add(New CustomHeaderCaption("B", "Column 2"))
-            Captions.Add(New CustomHeaderCaption("C", "Column 3"))
+		Public Sub New()
+			Captions = New ObservableCollection(Of CustomHeaderCaption)()
+			FillCaptions()
+		End Sub
+		Public Property Captions() As ObservableCollection(Of CustomHeaderCaption)
 
-            Captions.Add(New CustomHeaderCaption("1", "Row 1"))
-            Captions.Add(New CustomHeaderCaption("2", "Row 2"))
-            Captions.Add(New CustomHeaderCaption("3", "Row 3"))
-        End Sub
-    End Class
+		Private Sub FillCaptions()
+			Captions.Add(New CustomHeaderCaption("A", "Column 1"))
+			Captions.Add(New CustomHeaderCaption("B", "Column 2"))
+			Captions.Add(New CustomHeaderCaption("C", "Column 3"))
+
+			Captions.Add(New CustomHeaderCaption("1", "Row 1"))
+			Captions.Add(New CustomHeaderCaption("2", "Row 2"))
+			Captions.Add(New CustomHeaderCaption("3", "Row 3"))
+		End Sub
+	End Class
 
 	Public Class CustomHeaderCaption
 		Public Property OriginalCaption() As String
@@ -33,7 +34,6 @@ Namespace WpfApplication2
 			Me.OriginalCaption = oldText
 			Me.NewHeader = newText
 		End Sub
-
 
 	End Class
 End Namespace
